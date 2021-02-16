@@ -1,7 +1,7 @@
 import XCTest
-@testable import UnfionicAuthenticateSDK
+@testable import UnifonicAuthenticateSDK
 
-final class UnfionicAuthenticateSDKTests: XCTestCase {
+final class UnifonicAuthenticateSDKTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
