@@ -1,6 +1,6 @@
 import Alamofire
 
-struct UnfionicAuthenticateSDK {
+public struct UnfionicAuthenticateSDK {
     public func initialize() {
         let request = AF.request("https://swapi.dev/api/films")
         request.responseJSON { (data) in
