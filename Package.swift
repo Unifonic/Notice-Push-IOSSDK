@@ -5,18 +5,21 @@ import PackageDescription
 
 let package = Package(
     name: "UnfionicAuthenticateSDK",
+    platforms: [
+        .macOS(.v10_14), .iOS(.v13), .tvOS(.v13)
+    ],
     products: [
         .library(
             name: "UnfionicAuthenticateSDK",
             targets: ["UnfionicAuthenticateSDK"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0")
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0")
     ],
     targets: [
         .target(
             name: "UnfionicAuthenticateSDK",
-            dependencies: []),
+            dependencies: ["Alamofire"]),
         .testTarget(
             name: "UnfionicAuthenticateSDKTests",
             dependencies: ["UnfionicAuthenticateSDK"]),
