@@ -4,24 +4,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "UnifonicAuthenticateSDK",
+    name: "UnifonicNoticeSDK",
     platforms: [
-        .macOS(.v10_14), .iOS(.v13), .tvOS(.v13)
+        .macOS(.v10_14), .iOS(.v10), .tvOS(.v13)
     ],
     products: [
         .library(
-            name: "UnifonicAuthenticateSDK",
-            targets: ["UnifonicAuthenticateSDK"]),
+            name: "UnifonicNoticeSDK",
+            targets: ["UnifonicNoticeSDK"]),
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0")
     ],
     targets: [
         .target(
-            name: "UnifonicAuthenticateSDK",
+            name: "UnifonicNoticeSDK",
             dependencies: ["Alamofire"]),
         .testTarget(
-            name: "UnifonicAuthenticateSDKTests",
-            dependencies: ["UnifonicAuthenticateSDK"]),
+            name: "UnifonicNoticeSDKTests",
+            dependencies: ["UnifonicNoticeSDK"]),
     ]
 )
