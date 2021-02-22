@@ -12,7 +12,10 @@ struct Constants {
     static let kApiVersion = "v1"
     static let kRegisterAPI = "apps/register"
     static let kBindingAPI = "bindings"
+    static let kBindingsRefreshAPI = "bindings/refresh"
     static let kNotificationsReadAPI = "notifications/read"
+    static let kNotificationsReceivedAPI = "notifications/received"
+    static let kUpdateStatusAPI = "bindings/update_status"
     static let kTokenKey = "sdk_token"
     static let kAppIdKey = "app_id"
 }
