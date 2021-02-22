@@ -32,6 +32,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>UnifonicNoticeSDK</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>UnifonicNoticeSDKTests</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

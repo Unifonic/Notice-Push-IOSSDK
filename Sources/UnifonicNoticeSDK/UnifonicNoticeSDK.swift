@@ -1,13 +1,12 @@
 import Alamofire
 import UserNotifications
-import UIKit
 
 public enum NotificationReadType {
     case read
     case received
 }
 
-public class UnifonicNoticeSDK: NSObject, UIApplicationDelegate {
+public class UnifonicNoticeSDK: NSObject {
     
     public static let shared = UnifonicNoticeSDK()
     
@@ -144,7 +143,7 @@ public class UnifonicNoticeSDK: NSObject, UIApplicationDelegate {
         }
     }
     
-    public func  markNotification(type: NotificationReadType, userInfo: [String: Any], completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
+    public func markNotification(type: NotificationReadType, userInfo: [String: Any], completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
         let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey)
         let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey)
         guard let messageId = userInfo["uni_message_id"] as? String else {
