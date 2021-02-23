@@ -35,6 +35,7 @@ public class UnifonicNoticeSDK: NSObject {
         if storedAppId == appId {
             if let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey) {
                 print("Returning stored token")
+                UserDefaults.standard.set(identifier, forKey: Constants.kIdentifierKey)
                 completion(storedToken, nil)
             }
         }
@@ -72,7 +73,7 @@ public class UnifonicNoticeSDK: NSObject {
         }
     }
     
-    public func disableNotification(identifier: String, completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
+    public func disableNotification(completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
         guard let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey),
               let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey),
               let pushToken = UserDefaults.standard.string(forKey: Constants.kAddressKey) else {
@@ -111,7 +112,11 @@ public class UnifonicNoticeSDK: NSObject {
         }
     }
     
-    public func saveToken(identifier: String, pushToken: String, completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
+    public func saveToken(pushToken: String, completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
+        guard let identifier = identifier else {
+            completion(false, "Identifier not found")
+            return
+        }
         let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey)
         let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey)
         let storedPushToken = UserDefaults.standard.string(forKey: Constants.kAddressKey)
