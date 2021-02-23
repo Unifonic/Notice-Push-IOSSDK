@@ -18,8 +18,16 @@ public class UnifonicNoticeSDK: NSObject {
         get { return UserDefaults.standard.string(forKey: Constants.kAppIdKey) }
     }
     
+    public var identifier: String? {
+        get { return UserDefaults.standard.string(forKey: Constants.kIdentifierKey) }
+    }
+    
     public var sdkToken: String? {
         get { return UserDefaults.standard.string(forKey: Constants.kTokenKey) }
+    }
+    
+    public var pushToken: String? {
+        get { return UserDefaults.standard.string(forKey: Constants.kAddressKey) }
     }
     
     public func register(appId: String, identifier: String, completion: @escaping (_ sdkToken: String?, _ error: String?) -> ()) {
