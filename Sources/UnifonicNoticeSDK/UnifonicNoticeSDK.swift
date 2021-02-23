@@ -22,7 +22,7 @@ public class UnifonicNoticeSDK: NSObject {
         get { return UserDefaults.standard.string(forKey: Constants.kTokenKey) }
     }
     
-    public func register(appId: String, completion: @escaping (_ sdkToken: String?, _ error: String?) -> ()) {
+    public func register(appId: String, identifier: String, completion: @escaping (_ sdkToken: String?, _ error: String?) -> ()) {
         let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey)
         if storedAppId == appId {
             if let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey) {
@@ -49,6 +49,7 @@ public class UnifonicNoticeSDK: NSObject {
                     else {
                         if let sdkToken = response.object(forKey: Constants.kTokenKey) as? String {
                             UserDefaults.standard.set(appId, forKey: Constants.kAppIdKey)
+                            UserDefaults.standard.set(identifier, forKey: Constants.kIdentifierKey)
                             UserDefaults.standard.set(sdkToken, forKey: Constants.kTokenKey)
                             completion(sdkToken, nil)
                         }
@@ -66,7 +67,7 @@ public class UnifonicNoticeSDK: NSObject {
     public func disableNotification(identifier: String, completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
         guard let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey),
               let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey),
-              let pushToken = UserDefaults.standard.string(forKey: "address") else {
+              let pushToken = UserDefaults.standard.string(forKey: Constants.kAddressKey) else {
             completion(true, "Already disabled")
             return
         }
@@ -92,7 +93,7 @@ public class UnifonicNoticeSDK: NSObject {
                     completion(false, error as? String)
                 }
                 else {
-                    UserDefaults.standard.removeObject(forKey: "address")
+                    UserDefaults.standard.removeObject(forKey: Constants.kAddressKey)
                     print("Removed")
                     completion(true, nil)
                 }
@@ -105,7 +106,7 @@ public class UnifonicNoticeSDK: NSObject {
     public func saveToken(identifier: String, pushToken: String, completion: @escaping (_ status: Bool, _ error: String?) -> ()) {
         let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey)
         let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey)
-        let storedPushToken = UserDefaults.standard.string(forKey: "address")
+        let storedPushToken = UserDefaults.standard.string(forKey: Constants.kAddressKey)
         var create = true
         if storedPushToken != nil {
             if storedPushToken == pushToken {
@@ -144,7 +145,7 @@ public class UnifonicNoticeSDK: NSObject {
                     completion(false, error as? String)
                 }
                 else {
-                    UserDefaults.standard.set(pushToken, forKey: "address")
+                    UserDefaults.standard.set(pushToken, forKey: Constants.kAddressKey)
                     completion(true, nil)
                 }
             case .failure(let error):

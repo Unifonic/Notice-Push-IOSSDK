@@ -18,4 +18,6 @@ struct Constants {
     static let kUpdateStatusAPI = "bindings/update_status"
     static let kTokenKey = "sdk_token"
     static let kAppIdKey = "app_id"
+    static let kIdentifierKey = "identifier"
+    static let kAddressKey = "address"
 }
