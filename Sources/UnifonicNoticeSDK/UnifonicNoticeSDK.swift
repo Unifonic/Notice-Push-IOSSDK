@@ -30,12 +30,18 @@ public class UnifonicNoticeSDK: NSObject {
         get { return UserDefaults.standard.string(forKey: Constants.kAddressKey) }
     }
     
+    public func reset() {
+        UserDefaults.standard.removeObject(forKey: Constants.kAppIdKey)
+        UserDefaults.standard.removeObject(forKey: Constants.kTokenKey)
+        UserDefaults.standard.removeObject(forKey: Constants.kAddressKey)
+        UserDefaults.standard.removeObject(forKey: Constants.kIdentifierKey)
+    }
+    
     public func register(appId: String, identifier: String, completion: @escaping (_ sdkToken: String?, _ error: String?) -> ()) {
         let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey)
         if storedAppId == appId {
             if let storedToken = UserDefaults.standard.string(forKey: Constants.kTokenKey) {
                 print("Returning stored token")
-                UserDefaults.standard.set(identifier, forKey: Constants.kIdentifierKey)
                 completion(storedToken, nil)
             }
         }
