@@ -10,7 +10,17 @@ public class UnifonicNoticeSDK: NSObject {
     
     public static let shared = UnifonicNoticeSDK()
     
+    public var verbose = false
+    
     override private init() {}
+    
+    public var appId: String? {
+        get { return UserDefaults.standard.string(forKey: Constants.kAppIdKey) }
+    }
+    
+    public var sdkToken: String? {
+        get { return UserDefaults.standard.string(forKey: Constants.kTokenKey) }
+    }
     
     public func register(appId: String, completion: @escaping (_ sdkToken: String?, _ error: String?) -> ()) {
         let storedAppId = UserDefaults.standard.string(forKey: Constants.kAppIdKey)
