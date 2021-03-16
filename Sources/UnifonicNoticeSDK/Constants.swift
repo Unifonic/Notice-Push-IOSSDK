@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants {
     // static let kBaseUrl = "https://staging.notice.api.dev.unifonic.com/devices/api"
-    static let kBaseUrl = "https://notice.cloud.api.unifonic.com/device/api"
+    static let kBaseUrl = "https://notice.cloud.api.unifonic.com/devices/api"
     static let kApiVersion = "v1"
     static let kRegisterAPI = "apps/register"
     static let kBindingAPI = "bindings"
